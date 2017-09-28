@@ -64,7 +64,7 @@
 			</div>
 			<div class="col-md-3 right_sidebar col-xs-12">
 				<div class="cart-sidebar">
-					<h3>ITEMS IN YOUR CART <span>3</span></h3>
+					<h3>ITEMS IN YOUR CART <span>{{counter| async}}</span></h3>
 					<ul class="total">
 						<li>Subtotal <span>96.00 USD</span></li>
 						<li>Delivery <span>4.00 USD</span></li>
@@ -73,7 +73,7 @@
 					</ul>
 					<ul class="cart">
 						<li><a href="#">Continue Shopping</a></li>
-						<li><a href="#">CHECKOUT</a></li>
+						<li><a (click)="checkout()">CHECKOUT</a></li>
 					</ul>
 				</div>
 			</div>

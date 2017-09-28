@@ -13,7 +13,7 @@ import { HomeComponent } from './pages/home/core/home.component';
 import { HeaderComponent } from './layout/header/core/header.component';
 import { NavbarComponent } from './layout/header/navbar/navbar.component';
 import { HeaderTopComponent } from './layout/header/header-top/header-top.component';
-import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TermsComponent } from './pages/terms/terms.component';
@@ -26,6 +26,11 @@ import { ProductdetailsComponent } from './pages/productdetails/productdetails.c
 
 import { ProductsComponent } from './pages/products/products.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+
+
+import { StoreModule } from "@ngrx/store";
+import { InputValueReducer } from "./state-management/reducers/main-reducer";
+
 
 
 @NgModule({
@@ -71,7 +76,8 @@ import { CategoriesComponent } from './pages/categories/categories.component';
     AngularFontAwesomeModule,
     BrowserModule,
     AppRoutingModule  ,
-    NgxCarouselModule
+    NgxCarouselModule  ,
+    StoreModule.forRoot({inputValue: InputValueReducer})
   ],
   providers: [ ],
   bootstrap: [AppComponent]

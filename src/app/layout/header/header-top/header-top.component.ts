@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../../state-management/states/main-state";
 
 @Component({
   selector: 'app-header-top',
   templateUrl: './header-top.component.html',
   styleUrls: ['./header-top.component.css']
 })
-export class HeaderTopComponent implements OnInit {
+export class HeaderTopComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  counter: Observable<number>;
+
+
+
+  constructor(private store:Store<AppState>) {
+
+
+    this.counter = this.store.select(AppState => AppState.inputValue);
+
+
+
+
+  }
+
+
 
   ngOnInit() {
+
+  }
+  ngOnDestroy(){
+      console.log('des')
   }
 
 }
+
+

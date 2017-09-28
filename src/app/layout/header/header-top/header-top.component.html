@@ -11,7 +11,7 @@
 						<div class="login-wrap text-right">
 							<ul>
                 <li><a routerLink="/checkout">Checkout</a></li>
-                <li><a routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i><span class="badge cart-badge">3</span></a></li>
+                <li><a routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i><span class="badge cart-badge">{{counter | async}}</span></a></li>
 
 							</ul>
 						</div>
@@ -20,7 +20,9 @@
 							<a class="search-btn"  routerLink="/search"><i class="fa fa-search"></i></a>
 						</form>
 					</div>
-					<app-auth-form class="logo2 pull-left"></app-auth-form>
+
+					<app-auth-form></app-auth-form>
+
 				</div>
 			</div>
 		</div>

@@ -12,6 +12,7 @@ import {ProductdetailsComponent} from "../pages/productdetails/productdetails.co
 import {CategoriesComponent} from "../pages/categories/categories.component";
 import {ProductsComponent} from "../pages/products/products.component";
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },

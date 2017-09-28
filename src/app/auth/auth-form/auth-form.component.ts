@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-auth-form',
@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-form.component.css']
 })
 export class AuthFormComponent implements OnInit {
+  showAuthPanel: boolean;
 
-  constructor() { }
+
+  constructor() {
+    this.showAuthPanel=false;
+  }
 
   ngOnInit() {
   }

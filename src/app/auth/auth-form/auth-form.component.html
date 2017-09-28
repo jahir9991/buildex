@@ -1,6 +1,6 @@
-<div class=" ">
-						<a href="javascript:void(0);"><img src="assets/img/logo2.png" alt="" /></a>
-						<div class="login-area">
+<div class="logo2 pull-left" [ngClass]="{'active':showAuthPanel}">
+         						<a href="javascript:void(0);" (click)="showAuthPanel=!showAuthPanel"><img src="assets/img/logo2.png" alt="" /></a>
+						<div class="login-area" *ngIf="showAuthPanel">
 							<div class="login-wrapper text-left">
 								<form action="#">
 									<p class="text-center">Loner Ipsum</p>
@@ -16,4 +16,6 @@
 								<button>Register</button>
 							</div>
 						</div>
-					</div>
+
+</div>
+
