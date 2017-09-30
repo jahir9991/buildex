@@ -1,4 +1,41 @@
-.rightRs , .leftRs{
-  background: white;
-  border: white;
+ 
+#rightbtn {
+   position: absolute !important;
+   margin: auto;
+   top: -63px !important;
+   width: 22px;
+   height: 22px;
+   box-shadow: none !important;
+   border-radius: 999px;
+   right: 0;
+   background: #cacaca;
+   color: #fff;
+   text-align: center;
+   line-height: 20px;
+   transition: all .5s !important;
+   border: none !important;
+   bottom: unset !important;
+ }
+ #leftbtn {
+    position: absolute !important;
+    margin: auto;
+    top: -63px !important;
+    width: 22px;
+    height: 22px;
+    box-shadow: none !important;
+    border-radius: 999px;
+   right: 30px;
+    background: #cacaca;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    transition: all .5s !important;
+    border: none !important;
+    bottom: unset !important;
+   left:unset !important;
+ }
+#leftbtn:hover,#rightbtn:hover{
+    background: #f7882f;
 }
+
+
