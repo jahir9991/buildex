@@ -1,5 +1,9 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { NgxCarousel } from 'ngx-carousel';
+import { Component, OnInit} from '@angular/core';
+import {ProductService} from "../../../services/product/product.service";
+import {Product} from "../../../models/product";
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -8,46 +12,38 @@ import { NgxCarousel } from 'ngx-carousel';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  private newProducts:Array<any>;
+  popularProducts: Array<Product>;
+
+  constructor( private  productService:ProductService) {}
 
 
-  public carouselTileItems: Array<any>;
-  public carouselTile: any;
 
   ngOnInit(){
-    this.carouselTileItems = [0, 1, 2,3,4];
 
-    this.carouselTile = {
-      grid: {xs: 1, sm: 3, md: 3, lg: 3, all: 0},
-      slide: 2,
-      speed: 400,
-      animation: 'lazy',
-      point: true,
-      load: 2,
-      touch: true,
-      custom: 'tile',
-      dynamicLength: true
-    }
 
-    const len = this.carouselTileItems.length
-        if (len <= 10) {
-          for (let i = len; i < len + 5; i++) {
-            this.carouselTileItems.push(i);
-          }
-        }
+    this.productService.getNewProducts()
+      .subscribe(
+                (data: any) => {
+                    this.newProducts=data.data;
+                },
+                err => console.log(err), // error
+                () => console.log('getUserStatus Complete'));
+
+    this.productService.getProducts(1)
+      .subscribe(
+                (data: any) => {
+
+
+                    this.popularProducts= data.data;
+                },
+                err => console.log(err), // error
+                () => console.log('getUserStatus Complete'));
+
 
   }
 
-  // public carouselTileLoad(evt: any) {
-  //
-  //   const len = this.carouselTileItems.length
-  //   if (len <= 10) {
-  //     for (let i = len; i < len + 5; i++) {
-  //       this.carouselTileItems.push(i);
-  //     }
-  //   }
-  //
-  // }
+
 
 
 }

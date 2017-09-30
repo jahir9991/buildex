@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../state-management/states/main-state";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header-top',
@@ -14,7 +15,7 @@ export class HeaderTopComponent implements OnInit,OnDestroy {
 
 
 
-  constructor(private store:Store<AppState>) {
+  constructor(private store:Store<AppState>,private router: Router) {
 
 
     this.counter = this.store.select(AppState => AppState.inputValue);

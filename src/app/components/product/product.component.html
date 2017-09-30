@@ -1,0 +1,15 @@
+<div class="product-items mb-50" >
+                    								<div class="product-img">
+                    									<img src="{{product.image_list[0]}}" onError="this.src='assets/img/product/1.jpg'" alt="" />
+                    								</div>
+                    								<div class="product-content">
+                    									<h3><a routerLink="/productdetails/{{product.id}}">{{product.name}}</a></h3>
+                    									<span>$ {{product.price}} </span>
+                    									<div class="rating">
+                                        <rating [(ngModel)]="product.rating" [max]="5" [readonly]="false"></rating>
+
+                    									</div>
+                    									<a routerLink="/cart" class="cart">Add to cart</a>
+                    								</div>
+                    </div>
+

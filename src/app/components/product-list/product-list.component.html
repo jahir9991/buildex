@@ -1,0 +1,26 @@
+<div class="product-wrap p-20 bg-fff">
+					<h2 class="section-title">{{productType}}</h2>
+					<div class="product-active next-perv-style">
+             <ngx-carousel
+               [inputs]="carouselTile"
+                     [inputsLength]="products.length"
+                     (carouselLoad)="carouselLoad($event)">
+
+
+                        <ngx-tile *ngFor="let product of products ">
+
+
+                                     <app-product [product]="product"></app-product>
+
+
+
+
+                        </ngx-tile>
+
+                    <button class='leftRs'><</button>
+                    <button class='rightRs'>></button>
+                </ngx-carousel>
+
+
+					</div>
+				</div>

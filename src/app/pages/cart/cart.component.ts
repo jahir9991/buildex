@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import {INCREMENT} from "../../state-management/actions/main-action-creator";
 import {AppState} from "../../state-management/states/main-state";
 import {Observable} from "rxjs/Observable";
+import {ProductService} from "../../services/product/product.service";
 
 
 
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
   counter: Observable<number>;
 
 
-  constructor(private store:Store<AppState>) {
+  constructor(private productService:ProductService, private store:Store<AppState>) {
 
 
     this.counter = this.store.select(AppState => AppState.inputValue);

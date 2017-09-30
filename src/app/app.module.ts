@@ -30,6 +30,14 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 
 import { StoreModule } from "@ngrx/store";
 import { InputValueReducer } from "./state-management/reducers/main-reducer";
+import {ProductService} from "./services/product/product.service";
+import {HttpModule} from "@angular/http";
+
+import { ProductListComponent } from './components/product-list/product-list.component';
+import {RatingModule} from "ngx-bootstrap";
+import {FormsModule} from "@angular/forms";
+import { ProductComponent } from './components/product/product.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 
@@ -70,16 +78,31 @@ import { InputValueReducer } from "./state-management/reducers/main-reducer";
 
     ProductsComponent,
 
-    CategoriesComponent
+    CategoriesComponent,
+
+
+
+    ProductListComponent,
+
+
+
+    ProductComponent,
+
+
+
+    PaginationComponent
   ],
   imports: [
+    FormsModule,
+    RatingModule.forRoot(),
     AngularFontAwesomeModule,
     BrowserModule,
     AppRoutingModule  ,
     NgxCarouselModule  ,
+    HttpModule,
     StoreModule.forRoot({inputValue: InputValueReducer})
   ],
-  providers: [ ],
+  providers: [ ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,7 @@
 							</ul>
 						</div>
 						<form onsubmit="return false">
-							<input type="text" placeholder="Search here..."/>
+							<input type="text" placeholder="Search here..." (keyup)="router.navigate(['search',{term:$event.target.value}])"/>
 							<a class="search-btn"  routerLink="/search"><i class="fa fa-search"></i></a>
 						</form>
 					</div>
