@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "hmr": "ng serve --hmr -e=hmr",
-    "start": "ng serve",
-    "build": "ng build",
+    "hmr": "ng serve --hmr -e=hmr  --port 3000 ",
+    "start": "ng serve --port 3000",
+    "build": "ng build ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
