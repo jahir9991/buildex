@@ -31,7 +31,7 @@ export class ProductListComponent implements OnInit {
             animation: 'lazy',
             point: false,
             load: 2,
-            touch: true,
+            touch: false,
             custom: 'tile',
             dynamicLength: true
         }

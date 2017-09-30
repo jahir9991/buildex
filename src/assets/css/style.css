@@ -622,9 +622,9 @@ img {max-width:100%;height:auto}
 .product-content h3 a:hover{
 	color:#43c0f6;
 }
-.product-content span{
-	color:#000;
-}
+/*.product-content span{*/
+	/*color:#000;*/
+/*}*/
 .rating ul li {
 	display:inline-block;
 	color:#ffc808;
