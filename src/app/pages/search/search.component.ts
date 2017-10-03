@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product/product.service";
 import {Product} from "../../models/product";
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {ActivatedRoute, Data, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/pairwise";
 import "rxjs/add/operator/subscribeOn"
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-search',
@@ -14,24 +15,29 @@ import "rxjs/add/operator/subscribeOn"
 export class SearchComponent implements OnInit ,OnDestroy{
 
 
-  private products:Array<Product>;
+  public products:Array<Product>;
   grid: Boolean;
   private sub: any;
   private page: number;
   searchTerm: string="";
+  private _serv: Subscription;
 
   constructor( private  productService:ProductService ,private route: ActivatedRoute,
       private router: Router) {
 
-    this.router.events.subscribe((val) => {
-                      // see also
-                      if(val instanceof NavigationEnd) {
-                        console.log(val)
+    this._serv=  this.router.events.subscribe((val) => {
+                        // see also
+                        if(val instanceof NavigationEnd) {
+                          console.log(val)
 
-                        this.searchTerm=this.route.snapshot.params['term'];
-                      }
+                          this.searchTerm=this.route.snapshot.params['term']||"";
+                          this.search(1);
+                        }
 
-                  });
+      });
+
+
+
 
 
 
@@ -39,32 +45,35 @@ export class SearchComponent implements OnInit ,OnDestroy{
   }
 
   ngOnInit() {
+    window.scroll(0,0);
     this.grid = true;
+    this.products=[];
     // this.searchTerm = "";
 
 
-    this.productService.getProducts(1)
-      .subscribe(
-                (data: any) => {
+  }
 
+  search(page){
+    if(this.searchTerm==""){
+      this.productService.getProducts(page)
+                 .subscribe(data =>{
+                   this.products =data.data ;
+                 } );
 
-                    this.products= data.data;
-                },
-                err => console.log(err), // error
-                () => console.log('getUserStatus Complete'));
+    } else{
+      this.productService.getProductsBySearch( this.searchTerm,page)
+            .subscribe(data =>{
+              this.products =data.data ;
+            } );
 
-
-
-
-
-
-
+    }
 
 
 
   }
 
   ngOnDestroy(){
+    this._serv.unsubscribe();
 
   }
 

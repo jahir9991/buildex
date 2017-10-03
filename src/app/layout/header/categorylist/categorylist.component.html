@@ -1,0 +1,37 @@
+<div class="col-md-3 hidden-sm hidden-xs left-side">
+					<div class="catagory-wrap">
+						<a href="javascript:void(0);"><i class="fa fa-bars "></i> Categories</a>
+						<div class="catagory">
+							<ul>
+								<li *ngFor="let category of categoryList ">
+									<a  [routerLink]="['/products']" [queryParams]="{name:category.name, cat:category.id}">
+										<img src="{{category.image_list[0]}}" alt="" class="first"/>
+
+										{{category.name}}
+									</a>
+
+								</li>
+
+							</ul>
+							<div class="click text-center">
+								<a routerLink="/categories">Show All Categories</a>
+							</div>
+						</div>
+					</div>
+				</div>
+<div class="col-xs-6 col-sm-3 hidden-lg hidden-md ">
+					<div class="catagory-wrap">
+						<a href="javascript:void(0);" class="click2"><i class="fa fa-bars "></i> Categories</a>
+						<div class="catagory">
+							<ul>
+								<li *ngFor="let category of categoryList">
+                  <a routerLink="/products"><img src="assets/img/icon/cetagory/1.png" alt="" /> {{category.name}}</a>
+                </li>
+
+							</ul>
+							<div class="click2 text-center">
+								<a routerLink="/categories">Show All Categories</a>
+							</div>
+						</div>
+					</div>
+				</div>

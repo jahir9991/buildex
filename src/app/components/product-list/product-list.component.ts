@@ -26,11 +26,12 @@ export class ProductListComponent implements OnInit {
         this.products = [];
         this.carouselTile = <Carousel>{
             grid: {xs: 2, sm: 3, md: 4, lg: 4, all: 0},
-            slide: 3,
+            slide: 4,
             speed: 400,
             animation: 'lazy',
             point: false,
-            load: 2,
+            loop:true,
+            load: 4,
             touch: false,
             custom: 'tile',
             dynamicLength: true

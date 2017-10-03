@@ -15,7 +15,7 @@ export class HeaderTopComponent implements OnInit,OnDestroy {
 
 
 
-  constructor(private store:Store<AppState>,private router: Router) {
+  constructor(private store:Store<AppState>,public router: Router) {
 
 
     this.counter = this.store.select(AppState => AppState.inputValue);

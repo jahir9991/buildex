@@ -12,7 +12,7 @@ import {Product} from "../../../models/product";
 })
 export class HomeComponent implements OnInit {
 
-  private newProducts:Array<any>;
+  public newProducts:Array<any>;
   popularProducts: Array<Product>;
 
   constructor( private  productService:ProductService) {}
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(){
+    window.scroll(0,0);
 
 
     this.productService.getNewProducts()

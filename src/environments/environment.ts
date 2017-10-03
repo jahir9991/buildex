@@ -5,5 +5,9 @@
 
 export const environment = {
   production: false  ,
+  // API_ENDPOINT: 'http://localhost:5000/api/',
+  API_ENDPOINT: 'http://45.76.184.39:5000/api/',
+
+  AppName: 'builderex',
   hmr:false
 };

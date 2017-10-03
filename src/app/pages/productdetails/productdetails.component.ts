@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Product} from '../../models/product';
+import {ProductService} from '../../services/product/product.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
+  alsoLikePrtoducts: Array<Product>;
 
-  constructor() { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit() {
+    this.alsoLikePrtoducts=[] ;
+
+    this.productService.getNewProducts()
+      .subscribe(
+                (data: any) => {
+                    this.alsoLikePrtoducts=data.data;
+                },
+                err => console.log(err), // error
+                () => console.log('getUserStatus Complete'));
   }
 
 }

@@ -38,6 +38,8 @@ import {RatingModule} from "ngx-bootstrap";
 import {FormsModule} from "@angular/forms";
 import { ProductComponent } from './components/product/product.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { CategorylistComponent } from './layout/header/categorylist/categorylist.component';
+import {CategoryService} from './services/category/category.service';
 
 
 
@@ -90,7 +92,11 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 
 
 
-    PaginationComponent
+    PaginationComponent,
+
+
+
+    CategorylistComponent
   ],
   imports: [
     FormsModule,
@@ -102,7 +108,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     HttpModule,
     StoreModule.forRoot({inputValue: InputValueReducer})
   ],
-  providers: [ ProductService],
+  providers: [ ProductService,CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

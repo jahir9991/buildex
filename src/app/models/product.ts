@@ -1,5 +1,6 @@
 export interface Product {
 
+
   id:number;
   name:string;
   price:number;
@@ -8,4 +9,5 @@ export interface Product {
   rating:number;
   in_cart:boolean;
   supplier_name:string;
+
 }

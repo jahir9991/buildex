@@ -6,12 +6,12 @@
 		<h3><a routerLink="/productdetails/{{product.id}}">{{product.name}}</a></h3>
 		<span>$ {{product.price}} </span>
 		<div class="rating">
-			
+
 			<rating [(ngModel)]="product.rating" [max]="5" [readonly]="false"
 			        style="color: #f7882f !important;"></rating>
-		
+
 		</div>
-		<a routerLink="/cart" class="cart">Add to cart</a>
+		<a href="javascript:Void(0);" (click)="addToCart(product)" class="cart">Add to cart</a>
 	</div>
 </div>
 
