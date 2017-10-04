@@ -1,65 +1,76 @@
 <!-- product-area start -->
-		<div class="product-area mt-170">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7 center_div col-xs-12">
-						<div class="product-wrapper clear">
-							<div class="product-menu clear">
-                <h3 class="pull-left">Search Result For <i (ngModel)="searchTerm"  >: {{searchTerm||" All Products "}}</i></h3>
-								<ul class="pull-left">
+<div class="product-area mt-170">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 center_div col-xs-12">
+        <div class="product-wrapper clear">
+          <div class="product-menu clear">
+            <h3 class="pull-left">Search Result For <i (ngModel)="searchTerm">: {{searchTerm||" All Products "}}</i>
+            </h3>
+            <ul class="pull-left">
 
-									<li class="active" ngClass="{{grid?'bg-blue':''}}"><a href="javascript:void(0)"  (click)="grid = true"><i class="fa fa-th-large"></i></a></li>
-									<li class="active " ngClass="{{!grid?'bg-blue':''}}"><a href="javascript:void(0)"  (click)="grid = false" ><i class="fa fa-list-ul"></i></a></li>
-								</ul>
-								<select class="pull-right">
-									<option value="Relevance">Relevance</option>
-									<option value="web Design">Web Design</option>
-									<option value="ux/ui">UX/UI</option>
-									<option value="frontend">FrontEnd</option>
-									<option value="backend">Backend</option>
-									<option value="Relevance">Relevance</option>
-								</select>
-							</div>
+              <li class="active" ngClass="{{grid?'bg-blue':''}}"><a href="javascript:void(0)" (click)="grid = true"><i
+                class="fa fa-th-large"></i></a></li>
+              <li class="active " ngClass="{{!grid?'bg-blue':''}}"><a href="javascript:void(0)"
+                                                                      (click)="grid = false"><i
+                class="fa fa-list-ul"></i></a></li>
+            </ul>
+            <h3 class="pull-left  text-center"> {{totalProducts }} product found</h3>
+            <select class="pull-right">
+              <option value="Relevance">Relevance</option>
 
-								<div class="" id="">
-									<div class="row">
-										<div [ngClass]="grid ?'col-md-3':'col-md-12 product-list'"  *ngFor="let product of products">
-									    <app-product [product]="product"></app-product>
-										</div>
-                    <h5 *ngIf="products.length<1">no data found for search : {{searchTerm}}</h5>
+            </select>
+          </div>
 
-									</div>
-								</div>
+          <div class="" id="">
+            <div class="row">
+              <div [ngClass]="grid ?'col-md-3':'col-md-12 product-list'"
+                   *ngFor="let product of products| paginate: { itemsPerPage: 5, currentPage: p}">
+                <app-product [product]="product"></app-product>
+              </div>
+              <h1 *ngIf=" products.length < 1">
 
-						</div>
-					</div>
-					<div class="col-md-3 right_sidebar col-xs-12">
-						<h4 class="right_sidebar_title">Similar Products</h4>
-						<div class="product-item">
-							<div class="product-img2">
-								<img src="assets/img/product/arivel/1.png" alt="">
-							</div>
-							<div class="product-content-right-sidebar">
-								<h5><a routerLink="/productdetails">Lorem ipsum dolor</a></h5>
-								<span>$90.00 </span>
-								<div class="rating">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+                <h5 class="text-center">No product found for "{{searchTerm}}"</h5>
 
-					</div>
-				</div>
-                                <ng-container *ngIf="products.length>5" >
+              </h1>
 
-                                  <app-pagination ></app-pagination>
-                                </ng-container>
-			</div>
-		</div>
-		<!-- product-area end -->
+            </div>
+          </div>
+
+          <div class="row" [hidden]="products.length <5">
+            <div class="col-md-offset-2 col-md-8 col-xs-12">
+              <div class="pagination-wrap text-center pagination-wrap2">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-3 right_sidebar col-xs-12">
+        <h4 class="right_sidebar_title">Similar Products</h4>
+        <div class="product-item">
+          <div class="product-img2">
+            <img src="assets/img/product/arivel/1.png" alt="">
+          </div>
+          <div class="product-content-right-sidebar">
+            <h5><a routerLink="/productdetails">Lorem ipsum dolor</a></h5>
+            <span>$90.00 </span>
+            <div class="rating">
+              <ul>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star-o"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- product-area end -->

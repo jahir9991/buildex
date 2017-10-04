@@ -29,7 +29,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 
 
 import { StoreModule } from "@ngrx/store";
-import { InputValueReducer } from "./state-management/reducers/main-reducer";
+import { cartItemReducer } from "./state-management/reducers/main-reducer";
 import {ProductService} from "./services/product/product.service";
 import {HttpModule} from "@angular/http";
 
@@ -40,6 +40,10 @@ import { ProductComponent } from './components/product/product.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { CategorylistComponent } from './layout/header/categorylist/categorylist.component';
 import {CategoryService} from './services/category/category.service';
+import { NameCutterPipe } from './pipes/name-cutter.pipe';
+import {CartService} from './services/cart/cart.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { SubtotalSumPipe } from './pipes/subtotal-sum.pipe';
 
 
 
@@ -96,9 +100,18 @@ import {CategoryService} from './services/category/category.service';
 
 
 
-    CategorylistComponent
+    CategorylistComponent,
+
+
+
+    NameCutterPipe,
+
+
+
+    SubtotalSumPipe
   ],
   imports: [
+    NgxPaginationModule,
     FormsModule,
     RatingModule.forRoot(),
     AngularFontAwesomeModule,
@@ -106,9 +119,9 @@ import {CategoryService} from './services/category/category.service';
     AppRoutingModule  ,
     NgxCarouselModule  ,
     HttpModule,
-    StoreModule.forRoot({inputValue: InputValueReducer})
+    StoreModule.forRoot({cartItem: cartItemReducer})
   ],
-  providers: [ ProductService,CategoryService],
+  providers: [ ProductService,CategoryService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

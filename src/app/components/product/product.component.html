@@ -3,7 +3,7 @@
 		<img src="{{product.image_list[0]}}" onError="this.src='assets/img/product/1.jpg'" alt=""/>
 	</div>
 	<div class="product-content">
-		<h3><a routerLink="/productdetails/{{product.id}}">{{product.name}}</a></h3>
+		<h3><a routerLink="/productdetails/{{product.id}}">{{product.name | nameCutter}}</a></h3>
 		<span>$ {{product.price}} </span>
 		<div class="rating">
 
@@ -11,7 +11,7 @@
 			        style="color: #f7882f !important;"></rating>
 
 		</div>
-		<a href="javascript:Void(0);" (click)="addToCart(product)" class="cart">Add to cart</a>
+		<a href="javascript:void(0);" (click)="addToCart(product)" class="cart">Add to cart</a>
 	</div>
 </div>
 

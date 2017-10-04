@@ -12,6 +12,12 @@
   top:0;
 }
 .hero-area,.mt-170,.cart-area,.about-area,.contact-area{margin-top:170px;}
+
+.ml-5{margin-left: 5px;}
+.ml-10{margin-left: 10px;}
+.ml-20{margin-left: 20px;}
+.pdl-20{paddin-left: 20px;}
+.ml-50{margin-left: 50px;}
 .logo2 {
   position: relative;
   text-align: right;

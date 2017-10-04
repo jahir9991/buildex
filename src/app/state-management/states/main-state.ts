@@ -1,5 +1,7 @@
+import {Product} from '../../models/product';
+
 export interface AppState {
   counter: number;
-  inputValue: number;
+  cartItem: Array<any>;
 
 }

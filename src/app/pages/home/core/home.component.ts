@@ -1,8 +1,6 @@
-import { Component, OnInit} from '@angular/core';
-import {ProductService} from "../../../services/product/product.service";
-import {Product} from "../../../models/product";
-
-
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../../../services/product/product.service';
+import {Product} from '../../../models/product';
 
 
 @Component({
@@ -12,39 +10,37 @@ import {Product} from "../../../models/product";
 })
 export class HomeComponent implements OnInit {
 
-  public newProducts:Array<any>;
+  public newProducts: Array<any>;
   popularProducts: Array<Product>;
 
-  constructor( private  productService:ProductService) {}
+  constructor(private  productService: ProductService) {
+  }
 
 
-
-  ngOnInit(){
-    window.scroll(0,0);
+  ngOnInit() {
+    window.scroll(0, 0);
 
 
     this.productService.getNewProducts()
       .subscribe(
-                (data: any) => {
-                    this.newProducts=data.data;
-                },
-                err => console.log(err), // error
-                () => console.log('getUserStatus Complete'));
+        (data: any) => {
+          this.newProducts = data.data;
+        },
+        err => console.log(err), // error
+        () => console.log('getUserStatus Complete'));
 
-    this.productService.getProducts(1)
+    this.productService.getNewProducts()
       .subscribe(
-                (data: any) => {
+        (data: any) => {
 
 
-                    this.popularProducts= data.data;
-                },
-                err => console.log(err), // error
-                () => console.log('getUserStatus Complete'));
+          this.popularProducts = data.data;
+        },
+        err => console.log(err), // error
+        () => console.log('getUserStatus Complete'));
 
 
   }
-
-
 
 
 }

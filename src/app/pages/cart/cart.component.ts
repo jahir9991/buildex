@@ -1,30 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import {INCREMENT} from "../../state-management/actions/main-action-creator";
-import {AppState} from "../../state-management/states/main-state";
-import {Observable} from "rxjs/Observable";
-import {ProductService} from "../../services/product/product.service";
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+
+import {AppState} from '../../state-management/states/main-state';
+import {Observable} from 'rxjs/Observable';
+import {ProductService} from '../../services/product/product.service';
 import {NavigationEnd, Router} from '@angular/router';
-
-
+import {Product} from '../../models/product';
+import {CartService} from '../../services/cart/cart.service';
+import {Action} from '../../state-management/reducers/main-reducer';
+import {ADDTOCART} from '../../state-management/actions/main-action-creator';
 
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
-  counter: Observable<number>;
+
+  public cartItems: Observable<Array<any>>;
 
 
-  constructor(private productService:ProductService, private store:Store<AppState>,private router:Router) {
+  constructor(private productService: ProductService, private store: Store<AppState>, private router: Router, private cartService: CartService) {
 
-    this.counter = this.store.select(AppState => AppState.inputValue);
+    this.cartItems = this.store.select(AppState => AppState.cartItem);
   }
 
   ngOnInit() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 
     // this.router.events.subscribe((evt) => {
     //            if (!(evt instanceof NavigationEnd)) {
@@ -36,9 +40,33 @@ export class CartComponent implements OnInit {
 
   }
 
-  checkout(){
-    console.log(12);
-    this.store.dispatch({ type: INCREMENT });
+  checkout() {
+
   }
 
+
+  removeItemFromCart(id: number) {
+
+    let cartService = this.cartService;
+    let store = this.store;
+
+    let getData = function () {
+      cartService.getShoppingCart(1).subscribe(function (data) {
+
+        store.dispatch(<Action>{type: ADDTOCART, payload: data.data});
+      });
+    };
+
+
+    cartService.deleteItemFromCart(1, id).subscribe(function (response) {
+
+      if (response.status) {
+
+        getData();
+      }
+
+
+    });
+
+  }
 }

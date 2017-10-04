@@ -1,29 +1,31 @@
 <div class="header-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="logo pull-left">
-						<a routerLink="/home" >
-							<img src="assets/img/logo.png" alt="" />
-						</a>
-					</div>
-					<div class="search-form pull-left">
-						<div class="login-wrap text-right">
-							<ul>
-                <li><a routerLink="/checkout">Checkout</a></li>
-                <li><a routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i><span class="badge cart-badge">{{counter | async}}</span></a></li>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="logo pull-left">
+          <a routerLink="/home">
+            <img src="assets/img/logo.png" alt=""/>
+          </a>
+        </div>
+        <div class="search-form pull-left">
+          <div class="login-wrap text-right">
+            <ul>
+              <li *ngIf="(counters | async)>0"><a routerLink="/checkout">Checkout</a></li>
+              <li><a routerLink="/cart"> Cart <i class="fa fa-shopping-cart"></i><span class="badge cart-badge">{{counters | async}}</span></a>
+              </li>
 
-							</ul>
-						</div>
-						<form onsubmit="return false">
-							<input type="text" placeholder="Search here..." (keyup)="router.navigate(['search',{term:$event.target.value}])"/>
-							<a class="search-btn"  routerLink="/search"><i class="fa fa-search"></i></a>
-						</form>
-					</div>
+            </ul>
+          </div>
+          <form onsubmit="return false">
+            <input type="text" placeholder="Search here..."
+                   (keyup)="router.navigate(['search',{term:$event.target.value}])"/>
+            <a class="search-btn" routerLink="/search"><i class="fa fa-search"></i></a>
+          </form>
+        </div>
 
-					<app-auth-form></app-auth-form>
+        <app-auth-form></app-auth-form>
 
-				</div>
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
+</div>

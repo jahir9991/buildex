@@ -9,51 +9,51 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit,OnDestroy {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   public categoryName: string;
   public products: Array<any>;
   private catId: number;
   private _serv: Subscription;
+  public p:number;
 
 
-  constructor(
-        private route: ActivatedRoute,
-        private productService: ProductService,
-        private router: Router) {}
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService,
+              private router: Router) {
+  }
 
   ngOnInit() {
+    window.scroll(0, 0);
 
-    let th=this;
-    this.products=[];
+    let th = this;
+    this.products = [];
 
     this.route
-         .queryParams
-         .subscribe(params => {
-           // Defaults to 0 if no query param provided.
-           this.categoryName = params['name'] ;
-           getProductsBycategory(params['cat'])
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.categoryName = params['name'];
+        getProductsBycategory(params['cat']);
 
-         });
+      });
 
-    function getProductsBycategory(catId)
-    {
-    th._serv = th.productService.getProductsBycategory(catId)
-                     .subscribe(
-                       (data: any) => {
-                         th.products = data.results;
-                       },
-                       err => console.log(err), // error
-                       () => console.log('getProductsBycategory Complete'));
+    function getProductsBycategory(catId) {
+      th._serv = th.productService.getProductsBycategory(catId)
+        .subscribe(
+          (data: any) => {
+            th.products = data.rows;
+          },
+          err => console.log(err), // error
+          () => console.log('getProductsBycategory Complete'));
 
 
     }
 
 
-
-
   }
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     this._serv.unsubscribe();
 
   }

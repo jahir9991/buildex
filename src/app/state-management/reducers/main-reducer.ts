@@ -1,20 +1,21 @@
-import {Action} from '@ngrx/store';
-import {DECREMENT, INCREMENT} from "../actions/main-action-creator";
+// import {Action} from '@ngrx/store';
+import {ADDTOCART} from '../actions/main-action-creator';
 
 
+export interface Action {
+  type: string;
+  payload?: any;
+}
 
 
-export function InputValueReducer(state: number = 0, action: Action) {
+export function cartItemReducer(state: any = [], action: Action) {
   switch (action.type) {
-    case INCREMENT:
+    case ADDTOCART:
 
-      return state+1;
- case DECREMENT:
+      state = action.payload;
+      console.log(state);
 
-
-      return state-1;
-
-
+      return action.payload;
     default:
       return state;
   }

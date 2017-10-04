@@ -1,8 +1,8 @@
- 
+
 #rightbtn {
    position: absolute !important;
    margin: auto;
-   top: -63px !important;
+   top: -66px !important;
    width: 22px;
    height: 22px;
    box-shadow: none !important;
@@ -19,7 +19,7 @@
  #leftbtn {
     position: absolute !important;
     margin: auto;
-    top: -63px !important;
+    top: -66px !important;
     width: 22px;
     height: 22px;
     box-shadow: none !important;
