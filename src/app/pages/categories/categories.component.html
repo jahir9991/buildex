@@ -1,28 +1,134 @@
-<div class="about-area mb-30">
-              <div class="show-all-cetagory">
+<!-- hero-area start -->
+<div class="hero-area mb-30">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 center_div col-xs-12">
+        <div class="hero-wrap bg-fff">
+          <div class="cetagory-menu text-center">
+            <ul>
+              <li ngClass="{{activePage=='essentials'?'active':''}}"><a href="javascript:void(0)"
+                                                                        (click)="activePage='essentials'">ESSENTIALS</a>
+              </li>
+              <li ngClass="{{activePage=='all'?'active':''}}"><a href="javascript:void(0)" (click)="activePage='all'">All
+                Categories</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane fade in "
+                 ngClass="{{activePage=='essentials'?'active':''}}" id="essentials">
+              <div class="cetagory-items">
+                <ul>
+                  <li *ngFor="let category of essentialCategoryList">
+                    <a>
+                      <img src="{{category.image_list[0]}}" alt=""/>
+                      <p>{{category.name}}</p>
+                    </a>
+                  </li>
 
 
-                    <ul>
-
-                      <li><a routerLink="product"><img src="assets/img/icon/cetagory/1.png" alt="" /> Adhesive</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/2.png" alt="" />  Bricks & Blocks</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/3.png" alt="" />  Cement</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/4.png" alt="" />  Cleaning</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/5.png" alt="" />  Electrical</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/6.png" alt="" />  Electronics</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/7.png" alt="" />  Elevators</a></li>
-                                     <li><a routerLink="product"><img src="assets/img/icon/cetagory/8.png" alt="" />  Equipments & Machineries</a></li>
-
-
-                                     </ul>
-
-
-
-
-
-                </div>
+                </ul>
               </div>
+            </div>
+            <div class="tab-pane fade in " ngClass="{{activePage=='all'?'active':''}}" id="all">
+              <div class="cetagory-items">
+                <ul>
+                  <li *ngFor="let category of categoryList">
+                    <a [routerLink]="['/products']" [queryParams]="{name:category.name, cat:category.id}">
+                      <img src="{{category.image_list[0]}}" alt=""/>
+                      <p>{{category.name}}</p>
+                    </a>
+                  </li>
 
 
+                </ul>
 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 right_sidebar col-xs-12">
+        <ul class="bl-quick-order">
+          <li>
+            <h3>Quick Order</h3>
+            <h4>Cement</h4>
+            <form action="#">
+              <label>
+                <span>Price</span>
+                <input type="text" placeholder="$500"/>
+              </label>
+              <label>
+                <span>Brand</span>
+                <select name="select" id="no">
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                </select>
+              </label>
+              <label>
+                <span>Type</span>
+                <select name="select" id="no">
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                </select>
+              </label>
+              <label>
+                <span>Quantity</span>
+                <select name="select" id="no">
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                </select>
+              </label>
+              <label>
+                <span>grade</span>
+                <select name="select" id="no">
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                </select>
+              </label>
+              <label>
+                <span>Pakage</span>
+                <select name="select" id="no">
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                  <option value="option">option</option>
+                </select>
+              </label>
+              <label class="total">
+                <span>Total</span>
+                <strong class="pull-right">289.00</strong>
+              </label>
+              <button>Order</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- hero-area end -->
 

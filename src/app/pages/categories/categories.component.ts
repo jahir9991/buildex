@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CategoryService} from '../../services/category/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -6,10 +7,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+  @Input() activePage: String = 'all';
 
-  constructor() { }
+  public categoryList: Array<any>;
+  essentialCategoryList: Array<any>;
 
-  ngOnInit() {
+  constructor(private categoryService: CategoryService) {
   }
 
+  ngOnInit() {
+    this.categoryList = [];
+    this.essentialCategoryList = [];
+
+    this.categoryService.getAllCategories()
+      .subscribe((data: any) => {
+          console.log(data);
+
+          this.categoryList = data.data;
+        },
+        err => console.log(err), // error
+        () => console.log('getFirstTenCategories Complete'));
+
+    this.categoryService.getAllEssentialCategories()
+      .subscribe((data: any) => {
+          console.log(data);
+
+          this.essentialCategoryList = data.data;
+        },
+        err => console.log(err), // error
+        () => console.log('getFirstTenCategories Complete'));
+
+
+  }
 }
