@@ -1,21 +1,110 @@
 <div class="logo2 pull-left" [ngClass]="{'active':showAuthPanel}">
-         						<a href="javascript:void(0);" (click)="showAuthPanel=!showAuthPanel"><img src="assets/img/logo2.png" alt="" /></a>
-						<div class="login-area" *ngIf="showAuthPanel">
-							<div class="login-wrapper text-left">
-								<form action="#">
-									<p class="text-center">Loner Ipsum</p>
-									<input type="email" placeholder="Enter Your Email"/>
-									<input type="password" placeholder="Password"/>
-									<input type="checkbox" />
-									<span>Remember Me</span>
-									<button>Login</button>
-								</form>
-							</div>
-							<div class="registar-wrap text-center">
-								<strong>Lorem ipsum</strong>
-								<button>Register</button>
-							</div>
-						</div>
+
+  <a href="javascript:void(0);" (click)=" showAuthPanel=!showAuthPanel">
+    <img src="assets/img/logo2.png" alt=""/>
+
+    <p style="position: absolute;" class="pull-right">{{currentUser?.email}}</p>
+  </a>
+  <div class="login-area" *ngIf="showAuthPanel">
+    <ng-container *ngIf="!currentUser">
+      <div class="login-wrapper text-left">
+
+
+        <form novalidate (submit)="authFormSubmit(authForm.value)"
+              [formGroup]="authForm">
+          <legend *ngIf="currentAuthForm=='login'">Login Form</legend>
+          <legend *ngIf="currentAuthForm=='reg'">Sign Up Form</legend>
+
+          <div class="form-group">
+            <label>Email</label>
+            <template #popEmailTemplate>
+
+              <p *ngIf="email.errors && (password.dirty || email.touched) &&email.errors.required" class="has-danger">
+                Email is
+                required</p>
+              <p *ngIf="email.errors && (password.dirty || email.touched) &&email.errors.pattern" class="has-danger">The
+                email address must
+                contain at least the @ character</p>
+              <p *ngIf=" email.valid && (email.dirty || email.touched)" class="has-success">
+                <i class=" fa fa-check-circle"></i> accept</p>
+
+
+            </template>
+
+            <input type="email"
+
+                   [popover]="popEmailTemplate"
+                   class="form-control"
+                   formControlName="email"
+                   required>
+
+
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+
+            <template #popPassTemplate>
+              <p class="has-danger"
+                 *ngIf="password.errors && (password.dirty || password.touched) && password.errors.minlength">
+                Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength -
+                password.errors.minlength.actualLength}}</p>
+              <p class="has-danger"
+                 *ngIf="password.errors && (password.dirty || password.touched) && password.errors.required">
+                Password is
+                required</p>
+              <p class="has-success" *ngIf=" password.valid && (password.dirty || password.touched)">
+                <i class=" fa fa-check-circle"></i> accept</p>
+
+            </template>
+            <input type="password"
+
+                   [popover]="popPassTemplate"
+                   placement="auto"
+                   containerClass="bg-danger"
+
+                   class="form-control"
+                   formControlName="password"
+                   required>
+          </div>
+
+          <div class="registar-wrap text-center">
+
+            <button *ngIf="currentAuthForm=='login'">Log In</button>
+            <button *ngIf="currentAuthForm=='reg'">Sign Up</button>
+          </div>
+
+        </form>
+
+
+      </div>
+      <div class="registar-wrap text-center">
+
+        <ng-container *ngIf="currentAuthForm=='reg'">
+          <strong>already have an account?</strong>
+
+          <button (click)="currentAuthForm='login'">Login NOW</button>
+        </ng-container>
+        <ng-container *ngIf="currentAuthForm=='login'">
+
+          not an user?
+          <button (click)="currentAuthForm='reg'"> Register NOW</button>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="currentUser">
+      <div class="login-wrapper text-left">
+      </div>
+      <div class="registar-wrap text-center">
+
+        <button (click)="logOut()"> LOG OUT</button>
+
+      </div>
+
+    </ng-container>
+
+
+  </div>
 
 
 </div>
