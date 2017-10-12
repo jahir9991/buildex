@@ -95,28 +95,31 @@ img {max-width:100%;height:auto}
 	width:1065px;
 }
 .logo {
-	width:15%;
+	/*width:15%;*/
 }
 .search-form{
-	width:72%;
+	/*width:72%;*/
 	margin-top:10px;
 }
 .logo2 {
   text-align: right;
-  width: 10%;
+  /*width: 10%;*/
   position:relative;
-  margin-left:2%;
+  /*margin-left:2%;*/
 }
 .logo2 a{
 	display:block;
 }
-.logo2.active a img{opacity:0;}
+.logo2.active a img{
+	/*opacity:0;*/
+	background:#808080;
+}
 .logo2.active a{
-	background:#43c0f6;
+	/*background:#43c0f6;*/
 	position:relative;
 }
 .logo2.active a::before {
-  background: rgba(0, 0, 0, 0) url("../img/logo2-1.png")no-repeat center center;
+  /*background: rgba(0, 0, 0, 0) url("../img/logo2-1.png")no-repeat center center;*/
   content: "";
   height: 100%;
   left: 0;
@@ -130,7 +133,7 @@ img {max-width:100%;height:auto}
 	padding: 60px 40px 40px;
 	position: absolute;
 	right: 0;
-	/*top: 95%;*/
+	top:160px;
 	width: 320px;
 	z-index: 99;
 	/*opacity:0;*/
@@ -249,7 +252,7 @@ img {max-width:100%;height:auto}
 }
 .catagory {
   background: #fff none repeat scroll 0 0;
-  left:0px;
+  left:-85px;
   padding: 5px 0;
   position: absolute;
   text-align: left;
@@ -719,22 +722,22 @@ img {max-width:100%;height:auto}
 }
 
 .cetagory-details.cetagory-details2 {
-  left: -128px;
+  left:-90px;
 }
 .cetagory-details.cetagory-details3 {
-  left: -248px;
+  left: -200px;
 }
 .cetagory-details.cetagory-details4{
-	left: -368px;
+	left: -280px;
 }
 .cetagory-details.cetagory-details5{
-	  left: -488px;
+	  left: -370px;
 }
 .cetagory-details.cetagory-details6{
-	  left: -608px;
+	  left: -460px;
 }
 .cetagory-details.cetagory-details7{
-	  left: -728px;
+	  left: -530px;
 }
 
 .footer-cetagory ul > li:hover .cetagory-details{
@@ -1085,7 +1088,7 @@ img {max-width:100%;height:auto}
 .product-menu h3 {
   font-size: 20px;
   margin: 6px 30px 6px 0;
-  font-size:22px;
+  font-size:15px;
 }
 .product-menu ul li{
 	display:inline-block;
@@ -1677,3 +1680,52 @@ img {max-width:100%;height:auto}
   background: 	#016afb;
 }
 
+ /*custom*/
+ul.bl-quick-order li h3 {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin: 15px 0px;
+}
+ul.bl-quick-order li h4 {
+	font-size: 16px;
+	    display: inline-block;
+	    padding: 5px 25px;
+	    border: 1px solid #222;
+	    margin-left: 80px;
+	    margin-bottom: 40px;
+
+}
+ul.bl-quick-order li label {
+	font-weight: 400;
+	    display: block;
+	    padding: 0px 5px;
+	    overflow: hidden;
+	    margin-bottom: 10px;
+
+
+}
+ul.bl-quick-order li label span {
+    color: #43c0f6;
+    text-transform: capitalize;
+}
+ul.bl-quick-order li label input, ul.bl-quick-order li label select {
+    float: right;
+    height: 25px;
+    width: 120px;
+}
+ul.bl-quick-order li button:hover {
+    border-color: #43c0f6;
+    background: #43c0f6;
+}
+ul.bl-quick-order li button {
+    background: #f7882f;
+    border: 1px solid #f7882f;
+    height: 40px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all .5s;
+}

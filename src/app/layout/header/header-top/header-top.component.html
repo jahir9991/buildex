@@ -1,13 +1,13 @@
 <div class="header-top">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
-        <div class="logo pull-left">
+      <div class="col-md-12 col-xs-12">
+        <div class="logo pull-left col-md-2 col-xs-2">
           <a routerLink="/home">
             <img src="assets/img/logo.png" alt=""/>
           </a>
         </div>
-        <div class="search-form pull-left">
+        <div class="search-form pull-left col-md-7 col-xs-7">
           <div class="login-wrap text-right">
             <ul>
               <li *ngIf="(counters | async)>0"><a routerLink="/checkout">Checkout</a></li>
