@@ -40,9 +40,6 @@ export class CartComponent implements OnInit {
 
   }
 
-  checkout() {
-
-  }
 
 
   removeItemFromCart(id: number) {

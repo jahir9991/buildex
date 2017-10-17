@@ -31,6 +31,16 @@ export class ProductService {
 
   }
 
+  getProductDetails(productId) {
+
+    return this._http.get(environment.API_ENDPOINT + 'product/id/' + productId + '/userId/1')
+      .map(res => {
+        return res.json();
+
+      });
+
+  }
+
   getProductsBycategory(id) {
 
     let url = `${environment.API_ENDPOINT}product/bycategory/${id}`;

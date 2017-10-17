@@ -1,6 +1,5 @@
-export const ADDTOCART= 'ADDTOCART';
+export const ADDTOCART = 'ADDTOCART';
 
 
+export const INSTANTORDER = 'INSTANTORDER';
 
-export const DECREMENT = 'DECREMENT';
-export const RESET = 'RESET';

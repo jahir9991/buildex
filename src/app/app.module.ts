@@ -46,6 +46,14 @@ import {SubtotalSumPipe} from './pipes/subtotal-sum.pipe';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import {AuthService} from './services/auth/auth.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CheckoutService} from './services/checkout/checkout.service';
+import {BrandService} from './services/brand/brand.service';
+import {instantOrderReducer} from './state-management/reducers/instantOrder-reducer';
+import {DashboardComponent} from './pages/user/dashboard/dashboard.component';
+import {FooterComponent} from './layout/footer/footer/footer.component';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -101,7 +109,13 @@ import {AuthService} from './services/auth/auth.service';
     NameCutterPipe,
 
 
-    SubtotalSumPipe
+    SubtotalSumPipe,
+
+
+    DashboardComponent,
+
+
+    FooterComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -113,12 +127,23 @@ import {AuthService} from './services/auth/auth.service';
     NgxCarouselModule,
     HttpModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+
+    }),
+
     TooltipModule.forRoot(),
     PopoverModule.forRoot(),
-    StoreModule.forRoot({cartItem: cartItemReducer})
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBHKtjdweXe0PsOITOGsbBLk3aveqQkTgo'
+    }),
+    StoreModule.forRoot({cartItem: cartItemReducer, instantOrder: instantOrderReducer})
 
   ],
-  providers: [AuthService, ProductService, CategoryService, CartService],
+  providers: [AuthService, ProductService, CategoryService, CartService, CheckoutService, BrandService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

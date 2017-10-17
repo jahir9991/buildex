@@ -7,6 +7,7 @@ import {ADDTOCART} from '../../state-management/actions/main-action-creator';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../state-management/states/main-state';
 import {CartService} from '../../services/cart/cart.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,7 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
 
 
-  constructor(private store: Store<AppState>, private cartService: CartService) {
+  constructor(private toastr: ToastrService, private store: Store<AppState>, private cartService: CartService) {
 
 
   }
@@ -28,12 +29,16 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product: Product) {
+    let cartService = this.cartService;
 
     let store = this.store;
-    this.cartService.addToCart(1, product.id, 10).subscribe((response) => {
+    cartService.addToCart(1, product.id, 1).subscribe((response) => {
 
       if (response.status) {
-        this.cartService.getShoppingCart(1).subscribe(function (data) {
+
+        this.toastr.success('Product added to cart');
+
+        cartService.getShoppingCart(1).subscribe(function (data) {
 
           let d = data.data;
 

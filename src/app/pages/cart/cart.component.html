@@ -1,60 +1,66 @@
-<!-- product-area start -->
-<div class="cart-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7 col-xs-12">
-        <div class="cart-wrapper p-20 bg-fff mb-50">
-          <div class="table-responsive">
-            <table *ngIf="(cartItems | async).length >0;else other">
-              <thead>
-              <tr>
-                <th class="cart-img">Products</th>
-                <th class="cart-name"></th>
-                <th class="price">Price</th>
-                <th class="qty">qty</th>
-                <th class="Subtotal">Subtotal</th>
-                <th class="remove"></th>
-              </tr>
-              </thead>
-              <tbody>
+<div class="row">
 
-              <tr *ngFor="let item of  cartItems | async">
-                <td class="cart-img"><img src="{{item.image_list[0]}}" alt=""/></td>
-                <td class="cart-name"><h3><a routerLink="/productdetails">{{item.name}}</a></h3></td>
-                <td class="price">${{item.price}}</td>
-                <td class="qty">
-                  <p class="quantity cart-plus-minus">
-                    <input type="text" [(ngModel)]="item.quantity"/>
-                    <span class="dec qtybutton">-</span>
-                    <span class="inc qtybutton">+</span>
-                  </p>
-                </td>
-                <td class="Subtotal">${{item.price * item.quantity}}</td>
-                <td class="remove" (click)="removeItemFromCart(item.productId)"><span>+</span></td>
-              </tr>
+  <div class=" col-md-10">
 
-              </tbody>
-            </table>
-            <ng-template #other><h1 class="text-center">no item in cart</h1></ng-template>
-          </div>
-        </div>
+    <!-- product-area start -->
+
+
+    <div class="cart-wrapper main-component p-20 bg-fff mb-50">
+      <div class="table-responsive">
+        <table *ngIf="(cartItems | async).length >0;else other">
+          <thead>
+          <tr>
+            <th class="cart-img">Products</th>
+            <th class="cart-name"></th>
+            <th class="price">Price</th>
+            <th class="qty">qty</th>
+            <th class="Subtotal">Subtotal</th>
+            <th class="remove"></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let item of  cartItems | async">
+            <td class="cart-img"><img src="{{item.image_list[0]}}" alt=""/></td>
+            <td class="cart-name"><h3><a routerLink="/productdetails/{{item.productId}}">{{item.name}}</a></h3></td>
+            <td class="price">${{item.price}}</td>
+            <td class="qty">
+              <p class="quantity cart-plus-minus">
+                <input type="text" [(ngModel)]="item.quantity"/>
+                <span class="dec qtybutton">-</span>
+                <span class="inc qtybutton">+</span>
+              </p>
+            </td>
+            <td class="Subtotal">${{item.price * item.quantity}}</td>
+            <td class="remove" (click)="removeItemFromCart(item.productId)"><span>+</span></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <ng-template #other><h1 class="text-center">no item in cart</h1></ng-template>
       </div>
-      <div class="col-md-3 right_sidebar col-xs-12">
-        <div class="cart-sidebar">
-          <!--<h3>ITEMS IN YOUR CART <span>{{counter| async}}</span></h3>-->
-          <ul class="total">
-            <li>Subtotal <span>{{(cartItems | async)|subtotalSum}}</span></li>
-            <li>Delivery <span>4.00 USD</span></li>
-            <li>Discount <span>-5.00 USD</span></li>
-            <li>Grand Total <span>95.00 USD</span></li>
-          </ul>
-          <ul class="cart">
-            <li><a href="#">Continue Shopping</a></li>
-            <li><a (click)="checkout()">CHECKOUT</a></li>
-          </ul>
-        </div>
+    </div>
+
+    <!-- product-area end -->
+  </div>
+  <div class="col-md-2">
+
+    <div class=" right_sidebar ">
+
+      <div class="cart-sidebar">
+        <h3>ITEMS IN YOUR CART <span>{{(cartItems| async).length}}</span></h3>
+        <ul class="total">
+          <li>Subtotal <span>{{(cartItems | async)|subtotalSum}}  OMR</span></li>
+          <li>Delivery <span>0.00  OMR</span></li>
+          <li>Discount <span>-0.00  OMR</span></li>
+          <li>Grand Total <span>{{(cartItems | async)|subtotalSum}}  OMR</span></li>
+        </ul>
+        <ul class="cart">
+          <li><a href="javascript:void(0);" routerLink="/home">Continue </a></li>
+          <li><a href="javascript:void(0);" routerLink="/checkout">CHECKOUT</a></li>
+        </ul>
       </div>
     </div>
   </div>
+
 </div>
-<!-- product-area end -->

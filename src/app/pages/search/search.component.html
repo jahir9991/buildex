@@ -1,76 +1,72 @@
-<!-- product-area start -->
-<div class="product-area mt-170">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7 col-xs-12">
-        <div class="product-wrapper clear">
-          <div class="product-menu clear">
-            <h3 class="pull-left">Search Result For <i (ngModel)="searchTerm">: {{searchTerm||" All Products "}}</i>
-            </h3>
-            <ul class="pull-left">
+<div class="row  ">
+  <div class=" col-md-10 ">
+    <div class="product-wrapper clear main-component">
+      <div class="product-menu clear">
+        <h3 class="pull-left">Search Result For <i (ngModel)="searchTerm">: {{searchTerm||" All Products "}}</i>
+        </h3>
+        <ul class="pull-left">
 
-              <li class="active" ngClass="{{grid?'bg-blue':''}}"><a href="javascript:void(0)" (click)="grid = true"><i
-                class="fa fa-th-large"></i></a></li>
-              <li class="active " ngClass="{{!grid?'bg-blue':''}}"><a href="javascript:void(0)"
-                                                                      (click)="grid = false"><i
-                class="fa fa-list-ul"></i></a></li>
-            </ul>
-            <h3 class="pull-left  text-center"> {{totalProducts }} product found</h3>
-            <select class="pull-right">
-              <option value="Relevance">Relevance</option>
+          <li class="active" ngClass="{{grid?'bg-blue':''}}"><a href="javascript:void(0)" (click)="grid = true"><i
+            class="fa fa-th-large"></i></a></li>
+          <li class="active " ngClass="{{!grid?'bg-blue':''}}"><a href="javascript:void(0)"
+                                                                  (click)="grid = false"><i
+            class="fa fa-list-ul"></i></a></li>
+        </ul>
+        <h3 class="pull-left  text-center"> {{totalProducts }} product found</h3>
+        <select class="pull-right">
+          <option value="Relevance">Relevance</option>
 
-            </select>
+        </select>
+      </div>
+
+      <div class="" id="">
+        <div class="row">
+          <div [ngClass]="grid ?'col-md-3':'col-md-12 product-list'"
+               *ngFor="let product of products| paginate: { itemsPerPage: 12, currentPage: p}">
+            <app-product [product]="product"></app-product>
           </div>
+          <h1 *ngIf=" products.length < 1">
 
-          <div class="" id="">
-            <div class="row">
-              <div [ngClass]="grid ?'col-md-3':'col-md-12 product-list'"
-                   *ngFor="let product of products| paginate: { itemsPerPage: 5, currentPage: p}">
-                <app-product [product]="product"></app-product>
-              </div>
-              <h1 *ngIf=" products.length < 1">
+            <h5 class="text-center">No product found for "{{searchTerm}}"</h5>
 
-                <h5 class="text-center">No product found for "{{searchTerm}}"</h5>
-
-              </h1>
-
-            </div>
-          </div>
-
-          <div class="row" [hidden]="products.length <5">
-            <div class="col-md-offset-2 col-md-8 col-xs-12">
-              <div class="pagination-wrap text-center pagination-wrap2">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-              </div>
-            </div>
-          </div>
+          </h1>
 
         </div>
       </div>
-      <div class="col-md-3 right_sidebar col-xs-12">
-        <h4 class="right_sidebar_title">Similar Products</h4>
-        <div class="product-item">
-          <div class="product-img2">
-            <img src="assets/img/product/arivel/1.png" alt="">
-          </div>
-          <div class="product-content-right-sidebar">
-            <h5><a routerLink="/productdetails">Lorem ipsum dolor</a></h5>
-            <span>$90.00 </span>
-            <div class="rating">
-              <ul>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star-o"></i></li>
-              </ul>
-            </div>
+
+      <div class="row" [hidden]="products.length <12">
+        <div class="col-md-offset-2 col-md-8 col-xs-12">
+          <div class="pagination-wrap text-center pagination-wrap2">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
+      </div>
 
+    </div>
+  </div>
+  <div class="col-md-2  col-xs-12">
+    <div class="right_sidebar">
+      <h4 class="right_sidebar_title">Similar Products</h4>
+      <div class="product-item" *ngFor="let op of [1,2,3]">
+        <div class="product-img2">
+          <img src="assets/img/product/arivel/1.png" alt="">
+        </div>
+        <div class="product-content-right-sidebar">
+          <h5><a routerLink="/productdetails">Lorem ipsum dolor</a></h5>
+          <span>$90.00 </span>
+          <div class="rating">
+            <ul>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star-o"></i></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
-<!-- product-area end -->
+
+

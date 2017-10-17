@@ -1,134 +1,112 @@
-<!-- hero-area start -->
-<div class="hero-area mb-30">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7 col-xs-12">
-        <div class="hero-wrap bg-fff">
-          <div class="cetagory-menu text-center">
-            <ul>
-              <li ngClass="{{activePage=='essentials'?'active':''}}"><a href="javascript:void(0)"
-                                                                        (click)="activePage='essentials'">ESSENTIALS</a>
-              </li>
-              <li ngClass="{{activePage=='all'?'active':''}}"><a href="javascript:void(0)" (click)="activePage='all'">All
-                Categories</a></li>
-            </ul>
-          </div>
-          <div class="tab-content">
-            <div class="tab-pane fade in "
-                 ngClass="{{activePage=='essentials'?'active':''}}" id="essentials">
-              <div class="cetagory-items">
-                <ul>
-                  <li *ngFor="let category of essentialCategoryList">
-                    <a>
-                      <img src="{{category.image_list[0]}}" alt=""/>
-                      <p>{{category.name}}</p>
-                    </a>
-                  </li>
+<div class="row">
 
+  <div class=" col-md-10">
 
-                </ul>
-              </div>
-            </div>
-            <div class="tab-pane fade in " ngClass="{{activePage=='all'?'active':''}}" id="all">
-              <div class="cetagory-items">
-                <ul>
-                  <li *ngFor="let category of categoryList">
-                    <a [routerLink]="['/products']" [queryParams]="{name:category.name, cat:category.id}">
-                      <img src="{{category.image_list[0]}}" alt=""/>
-                      <p>{{category.name}}</p>
-                    </a>
-                  </li>
-
-
-                </ul>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 right_sidebar col-xs-12">
-        <ul class="bl-quick-order">
-          <li>
-            <h3>Quick Order</h3>
-            <h4>Cement</h4>
-            <form action="#">
-              <label>
-                <span>Price</span>
-                <input type="text" placeholder="$500"/>
-              </label>
-              <label>
-                <span>Brand</span>
-                <select name="select" id="no">
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                </select>
-              </label>
-              <label>
-                <span>Type</span>
-                <select name="select" id="no">
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                </select>
-              </label>
-              <label>
-                <span>Quantity</span>
-                <select name="select" id="no">
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                </select>
-              </label>
-              <label>
-                <span>grade</span>
-                <select name="select" id="no">
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                </select>
-              </label>
-              <label>
-                <span>Pakage</span>
-                <select name="select" id="no">
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                  <option value="option">option</option>
-                </select>
-              </label>
-              <label class="total">
-                <span>Total</span>
-                <strong class="pull-right">289.00</strong>
-              </label>
-              <button>Order</button>
-            </form>
+    <div class="hero-wrap bg-fff">
+      <div class="cetagory-menu text-center">
+        <ul>
+          <li ngClass="{{activePage=='essentials'?'active':''}}"><a href="javascript:void(0)"
+                                                                    (click)="currentEssential=null;
+                                                                    activePage= (activePage=='essentials')?'all':'essentials'">ESSENTIALS</a>
           </li>
+          <li ngClass="{{activePage=='all'?'active':''}}"><a href="javascript:void(0)"
+                                                             (click)="currentEssential=null;
+                                                             activePage= (activePage=='all')?'essentials':'all'">All
+            Categories</a></li>
         </ul>
       </div>
+      <div class="tab-content">
+        <div class="tab-pane fade in active">
+          <div class="cetagory-items">
+            <ul>
+              <li *ngFor="let category of essentialCategoryList">
+                <a (click)="currentEssential= (currentEssential!==category)? category:null;order = {}">
+                  <span>
+                  <img src="{{category.image_list[0]}}" alt=""/>
+                  </span>
+                  <p>{{category.name}}</p>
+                </a>
+              </li>
+
+
+            </ul>
+            <ul *ngIf="activePage=='all'" id="all" [@fadeDownAnimation]>
+              <li *ngFor="let category of categoryList">
+                <a [routerLink]="['/products']" [queryParams]="{name:category.name, cat:category.id}">
+                  <span>
+                  <img src="{{category.image_list[0]}}" alt=""/>
+                  </span>
+                  <p>{{category.name}}</p>
+                </a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-2">
+    <div class=" right_sidebar " *ngIf="currentEssential" [@enterAnimation]>
+      <ul class="bl-quick-order bg-fff ">
+        <li>
+          <h3>Quick Order</h3>
+          <h4>{{currentEssential.name}}</h4>
+          <form>
+            <label>
+              <span>Price</span>
+              <input name="price" [(ngModel)]="order.price" readonly
+                     value="{{(order.typeId?.price+order.gradeId?.price+order.packageId?.price)}}" type="text"
+                     placeholder="OMR 000"/>
+            </label>
+            <label>
+              <span>Brand</span>
+              <select [(ngModel)]="order.brandId" name="brandId">
+                <option *ngFor="let x of brands" [ngValue]="x">{{x.name}}</option>
+              </select>
+
+            </label>
+            <label>
+              <span>Type</span>
+              <select [(ngModel)]="order.typeId" name="typeId">
+                <option *ngFor="let x of types" [ngValue]="x">{{x.name}}</option>
+              </select>
+            </label>
+
+            <label>
+              <span>grade</span>
+              <select [(ngModel)]="order.gradeId" name="gradeId">
+                <option *ngFor="let x of grades" [ngValue]="x">{{x.name}}</option>
+              </select>
+            </label>
+            <label>
+              <span>Package</span>
+              <select [(ngModel)]="order.packageId" name="packageId">
+                <option *ngFor="let x of packages" [ngValue]="x">{{x.name}}</option>
+              </select>
+
+
+            </label>
+            <label>
+              <span>Quantity</span>
+              <input name="quantity" type="number" [(ngModel)]="order.quantity">
+            </label>
+            <label class="total">
+              <span>Total</span>
+              <strong class="pull-right">{{'OMR '
+                +((order.typeId?.price+order.gradeId?.price+order.packageId?.price)*order?.quantity||0)}}</strong>
+
+            </label>
+            <button (click)="instantOrderSubmit()">Order</button>
+            <!--k{{order| json}}-->
+          </form>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
-
-<!-- hero-area end -->
 

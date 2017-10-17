@@ -8,8 +8,25 @@ import {
   FormBuilder
 } from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({transform: 'translateY(-5%)', opacity: 0}),
+          animate('300ms', style({transform: 'translateY(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateY(0)', opacity: 1}),
+          animate('300ms', style({transform: 'translateY(-5%)', opacity: 0}))
+        ])
+      ]
+    )
+  ],
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
   styleUrls: ['./auth-form.component.css']
@@ -24,7 +41,7 @@ export class AuthFormComponent implements OnInit {
   currentUser: any;
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
     this.showAuthPanel = false;
   }
 
@@ -68,7 +85,7 @@ export class AuthFormComponent implements OnInit {
           if (response.status) {
             this.currentUser = response.user;
             this.showAuthPanel = false;
-
+            this.toastr.success('login SuccessFull', 'Toastr fun!');
           }
           console.log(response);
         });
@@ -90,5 +107,7 @@ export class AuthFormComponent implements OnInit {
   logOut() {
     this.currentUser = null;
     this.showAuthPanel = false;
+    this.toastr.warning('logout Successfull');
+    this.router.navigate(['home']);
   }
 }

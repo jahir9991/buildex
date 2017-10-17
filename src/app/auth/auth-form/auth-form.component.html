@@ -1,12 +1,16 @@
-<div class="logo2 pull-left col-md-3 col-xs-3" [ngClass]="{'active':showAuthPanel}">
+<div class="logo2 pull-left" [ngClass]="{'active':showAuthPanel}">
 
   <a href="javascript:void(0);" (click)=" showAuthPanel=!showAuthPanel">
     <img src="assets/img/logo2.png" alt=""/>
 
-    <p style="position: absolute;" class="pull-right">{{currentUser?.email}}</p>
+    <p style="position: absolute;
+        top: 55px;" class="pull-right">{{currentUser?.email}}</p>
   </a>
-  <div class="login-area" *ngIf="showAuthPanel">
-    <ng-container *ngIf="!currentUser">
+
+  <div class="login-area" *ngIf="showAuthPanel" [@enterAnimation]>
+
+
+    <ng-container [@enterAnimation] *ngIf="!currentUser">
       <div class="login-wrapper text-left">
 
 
@@ -92,8 +96,9 @@
         </ng-container>
       </div>
     </ng-container>
-    <ng-container *ngIf="currentUser">
-      <div class="login-wrapper text-left">
+    <ng-container [@enterAnimation] *ngIf="currentUser">
+      <div class=" text-left">
+        <button class="btn btn-info" routerLink="user">Dashboard</button>
       </div>
       <div class="registar-wrap text-center">
 

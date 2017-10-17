@@ -7,7 +7,8 @@ export class SubtotalSumPipe implements PipeTransform {
 
   transform(items: Array<number>, args?: any): any {
 
-    return items.reduce((a, b) => a + (b['price'] * b['quantity']), 0);
+    let r = items.reduce((a, b) => a + (b['price'] * b['quantity']), 0);
+    return r.toFixed(2);
   }
 
 }

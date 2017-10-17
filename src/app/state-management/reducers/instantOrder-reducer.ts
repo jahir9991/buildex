@@ -1,5 +1,5 @@
 
-import {ADDTOCART} from '../actions/main-action-creator';
+import {INSTANTORDER} from '../actions/main-action-creator';
 
 
 export interface Action {
@@ -8,9 +8,9 @@ export interface Action {
 }
 
 
-export function cartItemReducer(state: any = [], action: Action) {
+export function instantOrderReducer(state: any = null, action: Action) {
   switch (action.type) {
-    case ADDTOCART:
+    case INSTANTORDER:
 
       state = action.payload;
       console.log(state);
@@ -20,4 +20,3 @@ export function cartItemReducer(state: any = [], action: Action) {
       return state;
   }
 }
-

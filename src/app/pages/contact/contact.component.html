@@ -1,100 +1,106 @@
+<div class="row">
+
+  <div class=" col-md-10">
+    <div class="contact-wrap bg-fff p-20">
+      <h2>Contact Us</h2>
+      <ul class="contact clear">
+        <li class="button-dropdown">
+          <a href="javascript:void(0)" class="dropdown-toggle" (click)="showContact=(showContact=='chat')?'':'chat'">
+            <img src="assets/img/icon/chat.png" alt="" class="first"/>
+            <img src="assets/img/icon/chat1.png" alt="" class="second"/>
+            <span>Live Chat</span>
+          </a>
+          <ul class="text-center show" *ngIf="showContact=='chat'">
+            <li>
+              <h4>Login/sign up</h4>
+              <form action="#">
+                <input type="email" placeholder="Email"/>
+                <input type="password" placeholder="Password"/>
+                <p>Lorem Ipsum Proin gravida nibh</p>
+                <span>login/signup gravida</span>
+                <button>Chat</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="button-dropdown">
+          <a href="javascript:void(0)" class="dropdown-toggle" (click)="showContact=(showContact=='email')?'':'email'">
+            <img src="assets/img/icon/email.png" alt="" class="first"/>
+            <img src="assets/img/icon/email1.png" alt="" class="second"/>
+            <span>Email</span>
+          </a>
+          <ul class="contact-form show middle" *ngIf="showContact=='email'">
+            <li>
+              <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                  <h4>Reach Us at</h4>
+                  <a href="#">hasib.me1995@gmail.com</a>
+                  <h3>Lorem Ipsum Proin </h3>
+                  <p>Lorem Ipsum Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quiser trasn
+                    bibendum auctor</p>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <form action="#">
+                    <span>Name</span>
+                    <input type="text" placeholder="name"/>
+                    <span>Subject</span>
+                    <input type="text" placeholder="name"/>
+                    <span>Massage</span>
+                    <textarea cols="30" rows="10" placeholder="massage"></textarea>
+                    <button>Sand</button>
+                  </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="button-dropdown">
+          <a href="javascript:void(0)" class="dropdown-toggle"
+             (click)="showContact = showContact == 'call' ? '' : 'call'">
+            <img src="assets/img/icon/call.png" alt="" class="first"/>
+            <img src="assets/img/icon/call1.png" alt="" class="second"/>
+            <span>Call</span>
+          </a>
+          <ul class="text-center right show" *ngIf="showContact=='call'">
+            <li>
+              <h4>Hotline</h4>
+              <p>01852555612/01852555612/01852555612</p>
+              <strong>We Will call You</strong>
+              <form action="#">
+                <input type="text" placeholder="Your Phone Number"/>
+                <button>call</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="openning">
+        <h3>Opening Hours</h3>
+        <ul>
+          <li>Sunday-thrusday <span>8-8pm</span></li>
+          <li>Friday <span>Closed</span></li>
+          <li>Friday <span>span</span></li>
+          <li>Saturday <span>8-5 pm</span></li>
+          <li>Govt. Holidays <span>Closed</span></li>
+        </ul>
+      </div>
+      <div class="openning text-center">
+        <h3>Our Locations</h3>
+        <p>BuildEx.com </p>
+        <p>Al-Khalili HQ (2nd Floor)</p>
+        <p>PB 1869, PC 112, </p>
+        <p>Muscat, Sultanate Of Oman</p>
+      </div>
+    </div>
+    <div id="googleMap">
+
+
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
+
+
 <!-- contact-area start -->
-		<div class="contact-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-offset-2 col-md-7 col-xs-12">
-						<div class="contact-wrap bg-fff p-20">
-							<h2>Contact Us</h2>
-							<ul class="contact clear">
-								<li class="button-dropdown">
-									<a href="javascript:void(0)" class="dropdown-toggle">
-										<img src="assets/img/icon/chat.png" alt="" class="first"/>
-										<img src="assets/img/icon/chat1.png" alt="" class="second"/>
-										<span>Live Chat</span>
-									</a>
-									<ul class="text-center dropdown-menu">
-										<li>
-											<h4>Login/sign up</h4>
-											<form action="#">
-												<input type="email" placeholder="Email"/>
-												<input type="password" placeholder="Password"/>
-												<p>Lorem Ipsum Proin gravida nibh</p>
-												<span>login/signup gravida</span>
-												<button>Chat</button>
-											</form>
-										</li>
-									</ul>
-								</li>
-								<li class="button-dropdown">
-									<a href="javascript:void(0)" class="dropdown-toggle">
-										<img src="assets/img/icon/email.png" alt="" class="first"/>
-										<img src="assets/img/icon/email1.png" alt=""  class="second"/>
-										<span>Email</span>
-									</a>
-									<ul class="contact-form dropdown-menu middle">
-										<li>
-											<div class="row">
-												<div class="col-sm-6 col-xs-12">
-													<h4>Reach Us at</h4>
-													<a href="#">hasib.me1995@gmail.com</a>
-													<h3>Lorem Ipsum Proin </h3>
-													<p>Lorem Ipsum Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quiser trasn bibendum auctor</p>
-												</div>
-												<div class="col-sm-6 col-xs-12">
-													<form action="#">
-														<span>Name</span>
-														<input type="text" placeholder="name"/>
-														<span>Subject</span>
-														<input type="text" placeholder="name"/>
-														<span>Massage</span>
-														<textarea  cols="30" rows="10" placeholder="massage"></textarea>
-														<button>Sand</button>
-													</form>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</li>
-								<li class="button-dropdown">
-									<a href="javascript:void(0)" class="dropdown-toggle">
-										<img src="assets/img/icon/call.png" alt="" class="first"/>
-										<img src="assets/img/icon/call1.png" alt=""  class="second"/>
-										<span>Call</span>
-									</a>
-									<ul class="text-center right dropdown-menu">
-										<li>
-											<h4>Hotline</h4>
-											<p>01852555612/01852555612/01852555612</p>
-											<strong>We Will call You</strong>
-											<form action="#">
-												<input type="text" placeholder="Your Phone Number"/>
-												<button>call</button>
-											</form>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<div class="openning">
-								<h3>Opening Hours</h3>
-								<ul>
-									<li>Sunday-thrusday 		<span>8-8pm</span></li>
-									<li>Friday 				<span>Closed</span></li>
-									<li>Friday 				<span>span</span></li>
-									<li>Saturday 			<span>8-5 pm</span></li>
-									<li>Govt. Holidays 		<span>Closed</span></li>
-								</ul>
-							</div>
-							<div class="openning text-center">
-								<h3>Our Locations</h3>
-								<p>BuildEx.com </p>
-								<p>Al-Khalili HQ (2nd Floor)</p>
-								<p>PB 1869, PC 112, </p>
-								<p>Muscat, Sultanate Of Oman</p>
-							</div>
-						</div>
-						<div id="googleMap"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- contact-area start -->
